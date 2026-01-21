@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 from tensorflow.keras.models import load_model
 import random
+import os
 
 # Load the trained model
 MODEL_PATH = os.path.join("model", "randomforest.h5")
@@ -91,4 +92,5 @@ elif st.session_state.page == 2:
             st.warning(f"The predicted heart risk is moderate with a score of {risk_score:.2f}")
         else:
             st.success(f"The predicted heart risk is low with a score of {risk_score:.2f}")
+
 
