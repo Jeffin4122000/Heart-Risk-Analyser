@@ -4,7 +4,13 @@ from tensorflow.keras.models import load_model
 import random
 
 # Load the trained model
-model = load_model(r'model\randomforest.h5')
+MODEL_PATH = os.path.join("model", "randomforest.h5")
+
+if not os.path.exists(MODEL_PATH):
+    st.error(f"Model file not found at {MODEL_PATH}")
+    st.stop()
+
+model = load_model(MODEL_PATH)
 
 # Initialize session state variables
 if 'page' not in st.session_state:
@@ -85,3 +91,4 @@ elif st.session_state.page == 2:
             st.warning(f"The predicted heart risk is moderate with a score of {risk_score:.2f}")
         else:
             st.success(f"The predicted heart risk is low with a score of {risk_score:.2f}")
+
